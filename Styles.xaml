@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Defaults -->
+    <Style TargetType="ContentPage">
+        <Setter Property="BackgroundColor" Value="{StaticResource Brown50}" />
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource Brown900}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <!-- Typography -->
+    <Style x:Key="TitleLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource Brown900}" />
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="SubtitleLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource Brown900}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="BodyLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource Brown700}" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <Style x:Key="CaptionLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource Brown700}" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+    <!-- Cards -->
+    <Style x:Key="CardFrame" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource Brown100}" />
+        <Setter Property="BorderColor" Value="{StaticResource Brown200}" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="Padding" Value="16" />
+        <Setter Property="HasShadow" Value="True" />
+        <Setter Property="Margin" Value="0,8" />
+    </Style>
+
+    <Style x:Key="ListItemFrame" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="BorderColor" Value="{StaticResource Brown200}" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Padding" Value="12" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="Margin" Value="0,6" />
+    </Style>
+
+    <!-- Buttons -->
+    <Style x:Key="PrimaryButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource Brown600}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="Padding" Value="16,10" />
+    </Style>
+
+    <Style x:Key="SecondaryButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource Brown200}" />
+        <Setter Property="TextColor" Value="{StaticResource Brown900}" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="Padding" Value="16,10" />
+    </Style>
+
+    <Style x:Key="LinkButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{StaticResource Brown600}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HeightRequest" Value="40" />
+    </Style>
+
+    <!-- Inputs -->
+    <Style x:Key="InputEntry" TargetType="Entry">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="TextColor" Value="{StaticResource Brown900}" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource Brown500}" />
+        <Setter Property="Margin" Value="0,6" />
+    </Style>
+
+    <Style x:Key="InputPicker" TargetType="Picker">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="TextColor" Value="{StaticResource Brown900}" />
+        <Setter Property="TitleColor" Value="{StaticResource Brown500}" />
+        <Setter Property="Margin" Value="0,6" />
+    </Style>
+
+    <Style x:Key="FieldLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource Brown900}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="Margin" Value="0,10,0,0" />
+    </Style>
+
+    <Style x:Key="Divider" TargetType="BoxView">
+        <Setter Property="HeightRequest" Value="1" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Brown200}" />
+        <Setter Property="Margin" Value="0,10" />
+    </Style>
+
+</ResourceDictionary>
