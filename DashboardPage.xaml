@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MOBILUX.Pages.DashboardPage"
+             BackgroundColor="Transparent">
+
+    <Grid RowDefinitions="*,Auto"
+          RowSpacing="0"
+          BackgroundColor="Transparent">
+
+        <!-- ROW 0: IMÁGENES + LOGO FIJO (overlay) -->
+        <Grid Grid.Row="0"
+              BackgroundColor="Transparent">
+
+            <!-- SCROLL de imágenes (sin espacios, sin fondo) -->
+            <ScrollView BackgroundColor="Transparent">
+                <VerticalStackLayout Spacing="0"
+                                     BackgroundColor="Transparent"
+                                     HorizontalOptions="FillAndExpand">
+
+                    <!-- Imagen 1 -->
+                    <Grid HeightRequest="780" HorizontalOptions="FillAndExpand">
+                        <Image Source="imagedashboard1.png"
+                               Aspect="AspectFill"
+                               Opacity="0.70"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand" />
+                    </Grid>
+
+                    <!-- Imagen 2 -->
+                    <Grid HeightRequest="780" HorizontalOptions="FillAndExpand">
+                        <Image Source="imagedashboard2.png"
+                               Aspect="AspectFill"
+                               Opacity="0.70"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand" />
+                    </Grid>
+
+                    <!-- Imagen 3 -->
+                    <Grid HeightRequest="780" HorizontalOptions="FillAndExpand">
+                        <Image Source="imagedashboard3.png"
+                               Aspect="AspectFill"
+                               Opacity="0.70"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand" />
+                    </Grid>
+
+                    <!-- Imagen 4 -->
+                    <Grid HeightRequest="780" HorizontalOptions="FillAndExpand">
+                        <Image Source="imagedashboard4.png"
+                               Aspect="AspectFill"
+                               Opacity="0.70"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand" />
+                    </Grid>
+
+                    <!-- Imagen 5 -->
+                    <Grid HeightRequest="780" HorizontalOptions="FillAndExpand">
+                        <Image Source="imagedashboard5.png"
+                               Aspect="AspectFill"
+                               Opacity="0.70"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand" />
+                    </Grid>
+
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <!-- LOGO FIJO ARRIBA (sin fondo). Las imágenes pasan por detrás -->
+            <Grid InputTransparent="True"
+                  BackgroundColor="Transparent"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="Start"
+                  Padding="0"
+                  Margin="0">
+
+                <Image Source="loadinglogo.png"
+                       Opacity="0.90"
+                       WidthRequest="400"
+                       HeightRequest="400"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Margin="0,16,0,0" />
+            </Grid>
+
+        </Grid>
+
+        <!-- ROW 1: MENÚ INFERIOR (si lo quieres también sin fondo, déjalo transparente) -->
+        <Grid Grid.Row="1"
+              BackgroundColor="Transparent"
+              Padding="12"
+              RowDefinitions="Auto,Auto"
+              RowSpacing="10">
+
+            <Image x:Name="MenuArrow"
+                   Source="arrowup.png"
+                   WidthRequest="28"
+                   HeightRequest="28"
+                   HorizontalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnToggleMenuTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <VerticalStackLayout x:Name="MenuItems"
+                                 Grid.Row="1"
+                                 Spacing="10"
+                                 IsVisible="False">
+
+                <Button Text="Compras Activas" Style="{StaticResource SecondaryButton}" Clicked="OnPurchasesListClicked" />
+                <Button Text="Detalle de Compras" Style="{StaticResource SecondaryButton}" Clicked="OnPurchaseDetailClicked" />
+                <Button Text="Registrar Nueva Compra" Style="{StaticResource SecondaryButton}" Clicked="OnPurchaseRegisterClicked" />
+                <Button Text="Registrar Abono" Style="{StaticResource SecondaryButton}" Clicked="OnPaymentCreateClicked" />
+                <Button Text="Perfil" Style="{StaticResource SecondaryButton}" Clicked="OnProfileClicked" />
+                <Button Text="Contacto o Ayuda" Style="{StaticResource SecondaryButton}" Clicked="OnHelpClicked" />
+
+            </VerticalStackLayout>
+        </Grid>
+
+    </Grid>
+</ContentPage>
