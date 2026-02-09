@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MOBILUX.Pages.RegisterPage"
+             BackgroundColor="{StaticResource Brown50}">
+
+    <Grid>
+        <!-- Background image -->
+        <Image Source="loginbackground.png"
+               Aspect="AspectFill"
+               Opacity="0.95" />
+
+        <!-- Overlay -->
+        <BoxView Color="{StaticResource Brown50}"
+                 Opacity="0.70" />
+
+        <ScrollView>
+            <Grid Padding="24"
+                  RowDefinitions="Auto,Auto,Auto"
+                  RowSpacing="16">
+
+                <!-- Top logo -->
+                <Image Grid.Row="0"
+                       Source="loadinglogo.png"
+                       WidthRequest="300"
+                       HeightRequest="300"
+                       HorizontalOptions="Center"
+                       Margin="0,10,0,0" />
+
+                <!-- Title -->
+                <Label Grid.Row="1"
+                       Text="Create your account"
+                       Style="{StaticResource TitleLabel}"
+                       HorizontalTextAlignment="Center" />
+
+                <!-- Card -->
+                <Border Grid.Row="2"
+                        StrokeThickness="0"
+                        BackgroundColor="{StaticResource Brown100}"
+                        Padding="18"
+                        HorizontalOptions="Center"
+                        MaximumWidthRequest="720"
+                        StrokeShape="RoundRectangle 18">
+
+                    <VerticalStackLayout Spacing="12">
+
+                        <Label Text="Nombre" Style="{StaticResource FieldLabel}" />
+                        <Entry x:Name="FirstNameEntry"
+                               Placeholder="Digite su nombre"
+                               Style="{StaticResource InputEntry}" />
+
+                        <Label Text="Primer apellido" Style="{StaticResource FieldLabel}" />
+                        <Entry x:Name="LastName1Entry"
+                               Placeholder="Digite su primer apellido"
+                               Style="{StaticResource InputEntry}" />
+
+                        <Label Text="Segundo apellido" Style="{StaticResource FieldLabel}" />
+                        <Entry x:Name="LastName2Entry"
+                               Placeholder="Digite su segundo apellido"
+                               Style="{StaticResource InputEntry}" />
+
+                        <Label Text="Fecha de nacimiento" Style="{StaticResource FieldLabel}" />
+                        <DatePicker x:Name="BirthDatePicker" />
+
+                        <Label Text="Correo primario" Style="{StaticResource FieldLabel}" />
+                        <Entry x:Name="PrimaryEmailEntry"
+                               Placeholder="correo@ejemplo.com"
+                               Keyboard="Email"
+                               Style="{StaticResource InputEntry}" />
+
+                        <Label Text="Correo secundario" Style="{StaticResource FieldLabel}" />
+                        <Entry x:Name="SecondaryEmailEntry"
+                               Placeholder="correo alternativo (opcional)"
+                               Keyboard="Email"
+                               Style="{StaticResource InputEntry}" />
+
+                        <Label Text="Contraseña" Style="{StaticResource FieldLabel}" />
+                        <Entry x:Name="PasswordEntry"
+                               Placeholder="Digite su contraseña"
+                               IsPassword="True"
+                               Style="{StaticResource InputEntry}" />
+
+                        <!-- Password recommendation bubble -->
+                        <Border StrokeThickness="0"
+                                BackgroundColor="{StaticResource Brown50}"
+                                Padding="12"
+                                StrokeShape="RoundRectangle 14">
+                            <Label Text="Recomendación: la contraseña debe tener mínimo 8 caracteres y máximo 16. Debe contener al menos una letra mayúscula, un número y un caracter especial."
+                                   Style="{StaticResource BodyLabel}" />
+                        </Border>
+
+                        <Label Text="Confirmar contraseña" Style="{StaticResource FieldLabel}" />
+                        <Entry x:Name="ConfirmPasswordEntry"
+                               Placeholder="Confirme su contraseña"
+                               IsPassword="True"
+                               Style="{StaticResource InputEntry}" />
+
+                        <Button Text="Guardar"
+                                Style="{StaticResource PrimaryButton}"
+                                Margin="0,10,0,0"
+                                Clicked="OnSaveClicked" />
+
+                    </VerticalStackLayout>
+                </Border>
+
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>
