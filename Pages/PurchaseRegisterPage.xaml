@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MOBILUX.Pages.PurchaseRegisterPage"
+             BackgroundColor="{StaticResource Brown50}">
+    <Label Text="Placeholder"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"
+           TextColor="{StaticResource TextBrown600}" />
+</ContentPage>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Color x:Key="Brown50">#EFE9E9</Color>
+    <Color x:Key="Brown100">#D7CCC8</Color>
+    <Color x:Key="Brown200">#BCAAA4</Color>
+    <Color x:Key="Brown300">#A1887F</Color>
+    <Color x:Key="Brown400">#8D6E63</Color>
+    <Color x:Key="Brown500">#795548</Color>
+    <Color x:Key="Brown600">#6D4C41</Color>
+    <Color x:Key="Brown700">#5D4037</Color>
+    <Color x:Key="Brown800">#4E342E</Color>
+    <Color x:Key="Brown900">#3E2723</Color>
+
+</ResourceDictionary>

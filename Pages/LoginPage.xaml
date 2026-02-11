@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MOBILUX.Pages.LoginPage"
+    BackgroundColor="{StaticResource Brown50}">
+
+    <Grid>
+
+        <Image Source="loginbackground.png"
+               Aspect="AspectFill"
+               Opacity="0.95" />
+
+        <BoxView Color="{StaticResource Brown50}"
+                 Opacity="0.70" />
+
+        <Grid Padding="{OnIdiom Phone=16, Tablet=24, Desktop=24}"
+              RowDefinitions="*,Auto">
+
+            <Frame Grid.Row="0"
+                   Style="{StaticResource CardFrame}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   WidthRequest="{OnIdiom Phone=360, Tablet=720, Desktop=720}"
+                   MaximumWidthRequest="{OnIdiom Phone=360, Tablet=720, Desktop=720}"
+                   Padding="{OnIdiom Phone=18, Tablet=24, Desktop=24}">
+
+                <Grid ColumnSpacing="18">
+
+                    <!-- CLAVE: la columna izquierda en Phone = 0 -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{OnIdiom Phone=0, Tablet=0.9*, Desktop=0.9*}" />
+                        <ColumnDefinition Width="{OnIdiom Phone=*, Tablet=1.1*, Desktop=1.1*}" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Left: Brand (solo Tablet/Desktop) -->
+                    <VerticalStackLayout Grid.Column="0"
+                                         IsVisible="{OnIdiom Phone=False, Tablet=True, Desktop=True}"
+                                         Spacing="10"
+                                         HorizontalOptions="Center"
+                                         VerticalOptions="Center">
+
+                        <Image Source="mobilelogo.png"
+                               Aspect="AspectFit"
+                               WidthRequest="{OnIdiom Phone=160, Tablet=200, Desktop=220}"
+                               HeightRequest="{OnIdiom Phone=160, Tablet=200, Desktop=220}" />
+
+                        <Label Text="MOBILUX"
+                               Style="{StaticResource TitleLabel}"
+                               HorizontalTextAlignment="Center" />
+
+                        <Label Text="Fine furniture payments tracker"
+                               Style="{StaticResource BodyLabel}"
+                               HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+
+                    <!-- Inputs: SIEMPRE en la columna 1 (en Phone la columna 0 es 0, entonces queda centrado) -->
+                    <VerticalStackLayout Grid.Column="1"
+                                         Spacing="12"
+                                         VerticalOptions="Center"
+                                         HorizontalOptions="FillAndExpand">
+
+                        <!-- Logo en Phone -->
+                        <Image Source="mobilelogo.png"
+                               IsVisible="{OnIdiom Phone=True, Tablet=False, Desktop=False}"
+                               Aspect="AspectFit"
+                               WidthRequest="220"
+                               HeightRequest="220"
+                               HorizontalOptions="Center"
+                               Margin="0,0,0,8" />
+
+                        <Label Text="Sign in"
+                               Style="{StaticResource SubtitleLabel}"
+                               HorizontalTextAlignment="Center"
+                               HorizontalOptions="FillAndExpand" />
+
+                        <Label Text="Username"
+                               Style="{StaticResource FieldLabel}"
+                               HorizontalTextAlignment="Start"
+                               HorizontalOptions="FillAndExpand" />
+
+                        <Entry Placeholder="Enter your username"
+                               Style="{StaticResource InputEntry}"
+                               HorizontalOptions="FillAndExpand" />
+
+                        <Label Text="Password"
+                               Style="{StaticResource FieldLabel}"
+                               HorizontalTextAlignment="Start"
+                               HorizontalOptions="FillAndExpand" />
+
+                        <Entry Placeholder="Enter your password"
+                               IsPassword="True"
+                               Style="{StaticResource InputEntry}"
+                               HorizontalOptions="FillAndExpand" />
+
+                        <Button Text="Login"
+                                Style="{StaticResource PrimaryButton}"
+                                Margin="0,12,0,0"
+                                HorizontalOptions="FillAndExpand"
+                                Clicked="OnLoginClicked" />
+                    </VerticalStackLayout>
+
+                </Grid>
+            </Frame>
+
+            <VerticalStackLayout Grid.Row="1"
+                                 Spacing="6"
+                                 HorizontalOptions="Center"
+                                 Margin="0,18,0,0">
+
+                <Label HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Forgot your password? " />
+                            <Span Text="Click here to recover"
+                                  TextColor="{StaticResource Brown600}"
+                                  FontAttributes="Bold"
+                                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnRecoverTapped" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Don’t have an account? " />
+                            <Span Text="Register here"
+                                  TextColor="{StaticResource Brown600}"
+                                  FontAttributes="Bold"
+                                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnRegisterTapped" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+            </VerticalStackLayout>
+
+        </Grid>
+    </Grid>
+</ContentPage>
