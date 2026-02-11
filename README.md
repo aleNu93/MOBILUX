@@ -1,120 +1,121 @@
 # 📱 Mobilux
 
-Mobilux es una aplicación móvil desarrollada como proyecto académico, orientada al **control financiero de compras de mobiliario de alto valor adquiridas mediante financiamiento**. La aplicación permite a un cliente individual llevar un seguimiento claro y estructurado de cuánto debe por cada mueble, los abonos realizados y el estado general de sus compras.
+Mobilux is a mobile application developed as an academic project, focused on the **financial management of high-value furniture purchases acquired through financing**. The application allows an individual client to maintain a clear and structured record of outstanding balances, payments made, and the overall status of financed purchases.
 
-El proyecto simula un entorno real de financiamiento comercial, utilizando condiciones reales de mercado como primas mínimas, plazos definidos y tasas de interés, con un enfoque práctico y profesional.
-
----
-
-## 🎯 Objetivo del proyecto
-
-Brindar una herramienta móvil que permita a los usuarios:
-
-- Registrar compras de muebles financiados  
-- Definir condiciones financieras reales por compra  
-- Registrar abonos realizados  
-- Consultar saldos pendientes y estados de pago  
-- Visualizar reportes generales de compras activas  
-- Recibir notificaciones automáticas por correo electrónico  
-
-Todo esto sin depender directamente de la información proporcionada por la casa comercial.
+The project simulates a real commercial financing environment by incorporating realistic market conditions such as minimum down payments, defined repayment terms, and interest rates, all within a practical and professionally structured framework.
 
 ---
 
-## 🧩 Funcionalidades principales
+## 🎯 Project Objective
 
-- **Autenticación de usuario**
-  - Acceso protegido mediante credenciales
+To provide a mobile tool that enables users to:
 
-- **Gestión de compras financiadas**
-  - Registro de muebles adquiridos
-  - Definición de precio, prima inicial, plazo y tasa de interés
-  - Asociación con proveedor y categoría del mueble
+- Register financed furniture purchases  
+- Define realistic financial conditions for each purchase  
+- Record installment payments  
+- Monitor outstanding balances and payment status  
+- View consolidated reports of active purchases  
+- Receive automatic email notifications  
 
-- **Registro de abonos**
-  - Ingreso de pagos realizados por compra
-  - Actualización del saldo pendiente
-
-- **Consultas financieras**
-  - Saldo pendiente
-  - Cantidad de abonos realizados
-  - Fecha estimada de finalización
-  - Detalle individual por compra
-  - Separación clara entre múltiples compras
-
-- **Reporte general**
-  - Resumen de todas las compras activas del cliente
-
-- **Gestión de correos**
-  - Configuración de correo primario
-  - Correo secundario opcional para notificaciones
-
-- **Notificaciones automáticas**
-  - Envío de correos al registrar compras y abonos
+All of this independently from the information provided by the commercial retailer.
 
 ---
 
-## 🗂️ Arquitectura
+## 🧩 Core Features
 
-Mobilux está diseñado bajo una **arquitectura por capas**, compuesta por:
+- **User Authentication**
+  - Secure access through credential-based login  
 
-- **Base de datos transaccional**
-  - Diseño propio
-  - Normalizada
-  - Reglas de integridad mediante claves y restricciones
+- **Financed Purchase Management**
+  - Registration of acquired furniture  
+  - Definition of price, initial down payment, repayment term, and interest rate  
+  - Association with supplier and furniture category  
 
-- **Aplicación móvil**
-  - Desarrollada en **C# con .NET MAUI**
-  - Compatible con **Android e iOS**
+- **Payment Registration**
+  - Recording of payments made per purchase  
+  - Automatic update of outstanding balance  
+
+- **Financial Queries**
+  - Remaining balance  
+  - Number of payments completed  
+  - Estimated completion date  
+  - Detailed breakdown per purchase  
+  - Clear separation between multiple active purchases  
+
+- **General Report**
+  - Summary of all active purchases  
+
+- **Email Management**
+  - Primary email configuration  
+  - Optional secondary email for notifications  
+
+- **Automatic Notifications**
+  - Email notifications triggered when registering purchases and payments  
+
+---
+
+## 🗂️ Architecture
+
+Mobilux is designed using a **layered architecture**, composed of:
+
+- **Transactional Database**
+  - Custom-designed schema  
+  - Normalized relational structure  
+  - Integrity rules enforced through keys and constraints  
+
+- **Mobile Application**
+  - Developed in **C# with .NET MAUI**  
+  - Compatible with **Android and iOS**  
 
 - **Web Service**
-  - Opcional, según la arquitectura final definida por el equipo
+  - Optional component depending on the final architectural definition  
 
 ---
 
-## 🖥️ Pantallas del sistema
+## 🖥️ System Screens
 
-El sistema contempla las siguientes pantallas:
+The application includes the following interfaces:
 
-1. Pantalla de bienvenida / Login  
-2. Menú principal / Dashboard  
-3. Listado de compras  
-4. Detalle de compra  
-5. Registro de compra  
-6. Registro de abono  
-7. Reporte general  
-8. Gestión de correos  
-9. Perfil del cliente  
-10. Ayuda / Acerca de  
-
----
-
-## 🎨 Diseño visual
-
-- Interfaz personalizada
-- Colores y fondos definidos
-- Botones personalizados
-- No se utilizan componentes visuales estándar ni fondos blancos
-- Diseño orientado a sobriedad, claridad y usabilidad
+1. Welcome Screen / Login  
+2. Main Menu / Dashboard  
+3. Purchase List  
+4. Purchase Detail  
+5. New Purchase Registration  
+6. Payment Registration  
+7. General Report  
+8. Email Management  
+9. Client Profile  
+10. Help / About  
 
 ---
 
-## 🛠️ Tecnologías utilizadas
+## 🎨 Visual Design
 
-- **Lenguaje:** C#  
+- Custom-designed user interface  
+- Defined color schemes and background styles  
+- Customized buttons  
+- No use of default visual components or plain white backgrounds  
+- Design focused on clarity, consistency, and usability  
+
+---
+
+## 🛠️ Technologies Used
+
+- **Programming Language:** C#  
 - **Framework:** .NET MAUI  
-- **Base de datos:** SQL Server  
-- **Plataformas objetivo:** Android / iOS  
+- **Database:** SQL Server  
+- **Target Platforms:** Android / iOS  
 
 ---
 
-## 📚 Contexto académico
+## 📚 Academic Context
 
-Este proyecto forma parte del curso de **Desarrollo de Aplicaciones Móviles** y tiene fines **exclusivamente académicos**.  
-Las marcas comerciales utilizadas se emplean únicamente como referencia visual para simular escenarios reales de financiamiento.
+This project was developed as part of the **Mobile Application Development** course and is intended **exclusively for academic purposes**.  
+
+Any commercial brands referenced are used solely for illustrative purposes in order to simulate realistic financing scenarios.
 
 ---
 
-## 👥 Autores
+## 👥 Authors
 
-Proyecto desarrollado por estudiantes como parte de la evaluación académica del curso.
+Project developed by students as part of the academic evaluation for the course.
