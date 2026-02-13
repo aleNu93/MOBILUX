@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MOBILUX.Pages.ReportsPage"
+             BackgroundColor="{StaticResource Brown50}"
+             Title="Reporte General">
+
+    <Grid RowDefinitions="*,Auto"
+          RowSpacing="0">
+
+        <!-- CONTENIDO (ORIGINAL) -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="20" Spacing="15">
+
+                <Label Text="Resumen Financiero"
+                       Style="{StaticResource TitleLabel}" />
+
+                <!-- Resumen General -->
+                <Frame Style="{StaticResource CardFrame}">
+                    <VerticalStackLayout Spacing="8">
+
+                        <Label Text="Total Compras Registradas"
+                               Style="{StaticResource BodyLabel}" />
+                        <Label Text="8 Compras"
+                               Style="{StaticResource SubtitleLabel}" />
+
+                        <BoxView Style="{StaticResource Divider}" />
+
+                        <Label Text="Total Financiado"
+                               Style="{StaticResource BodyLabel}" />
+                        <Label Text="$ 45,000"
+                               Style="{StaticResource SubtitleLabel}" />
+
+                        <Label Text="Total Abonado"
+                               Style="{StaticResource BodyLabel}" />
+                        <Label Text="$ 18,500"
+                               Style="{StaticResource SubtitleLabel}" />
+
+                        <Label Text="Saldo Pendiente"
+                               Style="{StaticResource BodyLabel}" />
+                        <Label Text="$ 26,500"
+                               Style="{StaticResource SubtitleLabel}" />
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Compras por Categoría -->
+                <Label Text="Distribución por Categoría"
+                       Style="{StaticResource SubtitleLabel}" />
+
+                <Frame Style="{StaticResource ListItemFrame}">
+                    <VerticalStackLayout>
+                        <Label Text="Sofás: 3 compras"
+                               Style="{StaticResource BodyLabel}" />
+                        <Label Text="Comedores: 2 compras"
+                               Style="{StaticResource BodyLabel}" />
+                        <Label Text="Camas: 2 compras"
+                               Style="{StaticResource BodyLabel}" />
+                        <Label Text="Sillas: 1 compra"
+                               Style="{StaticResource BodyLabel}" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Estado de Compras -->
+                <Label Text="Estado de Financiamientos"
+                       Style="{StaticResource SubtitleLabel}" />
+
+                <Frame Style="{StaticResource ListItemFrame}">
+                    <VerticalStackLayout>
+                        <Label Text="Activas: 5"
+                               Style="{StaticResource BodyLabel}" />
+                        <Label Text="Canceladas: 3"
+                               Style="{StaticResource BodyLabel}" />
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- MENÚ (CORRECTO, FUERA DEL SCROLL) -->
+        <Grid Grid.Row="1"
+              BackgroundColor="Transparent"
+              Padding="12"
+              RowDefinitions="Auto,Auto"
+              RowSpacing="10">
+
+            <!-- Área de tap grande para que siempre abra -->
+            <Grid x:Name="MenuToggleArea"
+                  BackgroundColor="Transparent"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center"
+                  Padding="12">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnToggleMenuTapped" />
+                </Grid.GestureRecognizers>
+
+                <Image x:Name="MenuArrow"
+                       Source="arrowup.png"
+                       WidthRequest="28"
+                       HeightRequest="28"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       InputTransparent="True" />
+            </Grid>
+
+            <ScrollView x:Name="MenuScroll"
+                        Grid.Row="1"
+                        IsVisible="False"
+                        HeightRequest="{Binding MenuMaxHeight}">
+
+                <VerticalStackLayout Spacing="10">
+                    <Button Text="Dashboard" Style="{StaticResource SecondaryButton}" Clicked="OnDashboardClicked" />
+                    <Button Text="Compras Activas" Style="{StaticResource SecondaryButton}" Clicked="OnPurchasesListClicked" />
+                    <Button Text="Detalle de Compras" Style="{StaticResource SecondaryButton}" Clicked="OnPurchaseDetailClicked" />
+                    <Button Text="Registrar Nueva Compra" Style="{StaticResource SecondaryButton}" Clicked="OnPurchaseRegisterClicked" />
+                    <Button Text="Registrar Abono" Style="{StaticResource SecondaryButton}" Clicked="OnPaymentCreateClickedMenu" />
+                    <Button Text="Perfil" Style="{StaticResource SecondaryButton}" Clicked="OnProfileClicked" />
+                    <Button Text="Contacto o Ayuda" Style="{StaticResource SecondaryButton}" Clicked="OnHelpClicked" />
+                    <Button Text="Reportes" Style="{StaticResource SecondaryButton}" Clicked="OnReportsClicked" />
+                    <Button Text="Cerrar sesión" Style="{StaticResource SecondaryButton}" Clicked="OnLogoutClicked" />
+                </VerticalStackLayout>
+
+            </ScrollView>
+
+        </Grid>
+
+    </Grid>
+</ContentPage>

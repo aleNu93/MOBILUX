@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MOBILUX.Pages.HelpPage"
+    Title="Ayuda"
+    BackgroundColor="{StaticResource Brown50}">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- CONTENIDO ORIGINAL (NO TOCADO) -->
+        <Grid Grid.Row="0">
+
+            <!-- Box centrado -->
+            <Border
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                StrokeShape="RoundRectangle 18"
+                BackgroundColor="#D8CCC7"
+                Stroke="#C3B2AB"
+                WidthRequest="{OnIdiom Phone=360, Tablet=720, Desktop=720}"
+                MaximumWidthRequest="{OnIdiom Phone=360, Tablet=720, Desktop=720}"
+                Padding="{OnIdiom Phone=18, Tablet=24, Desktop=24}">
+
+                <ScrollView>
+                    <VerticalStackLayout Spacing="14">
+
+                        <Label Text="Ayuda"
+                               HorizontalTextAlignment="Center"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="#5A3B31" />
+
+                        <Label Text="Aquí encontrarás respuestas rápidas sobre el uso de MOBILUX, registro de compras, abonos y notificaciones."
+                               TextColor="#2B2B2B"
+                               FontSize="14" />
+
+                        <!-- Sección 1 -->
+                        <Border StrokeShape="RoundRectangle 14"
+                                BackgroundColor="#EFE8E5"
+                                Stroke="#D0C1BB"
+                                Padding="14">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Compras"
+                                       FontAttributes="Bold"
+                                       TextColor="#5A3B31" />
+
+                                <Label Text="• Registra una compra desde la pantalla de registro y completa el monto, prima y condiciones."
+                                       TextColor="#2B2B2B" />
+                                <Label Text="• Revisa tus compras en la lista y toca una para ver el detalle."
+                                       TextColor="#2B2B2B" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Sección 2 -->
+                        <Border StrokeShape="RoundRectangle 14"
+                                BackgroundColor="#EFE8E5"
+                                Stroke="#D0C1BB"
+                                Padding="14">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Pagos y abonos"
+                                       FontAttributes="Bold"
+                                       TextColor="#5A3B31" />
+
+                                <Label Text="• Crea un abono desde el detalle de compra o desde la opción de pagos."
+                                       TextColor="#2B2B2B" />
+                                <Label Text="• Verifica el monto y la fecha antes de guardar."
+                                       TextColor="#2B2B2B" />
+                                <Label Text="• El reporte general resume saldos y abonos acumulados."
+                                       TextColor="#2B2B2B" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Sección 3 -->
+                        <Border StrokeShape="RoundRectangle 14"
+                                BackgroundColor="#EFE8E5"
+                                Stroke="#D0C1BB"
+                                Padding="14">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Notificaciones por correo"
+                                       FontAttributes="Bold"
+                                       TextColor="#5A3B31" />
+
+                                <Label Text="• Activa o desactiva las notificaciones en tu perfil."
+                                       TextColor="#2B2B2B" />
+                                <Label Text="• El correo secundario es opcional. Si no lo usas, se mantiene deshabilitado."
+                                       TextColor="#2B2B2B" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Sección 4 -->
+                        <Border StrokeShape="RoundRectangle 14"
+                                BackgroundColor="#EFE8E5"
+                                Stroke="#D0C1BB"
+                                Padding="14">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Errores comunes"
+                                       FontAttributes="Bold"
+                                       TextColor="#5A3B31" />
+
+                                <Label Text="• Si un correo no es válido, revisa que incluya @ y un dominio (por ejemplo, .com)."
+                                       TextColor="#2B2B2B" />
+                                <Label Text="• Si no ves cambios, vuelve a cargar la pantalla o reinicia la app."
+                                       TextColor="#2B2B2B" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Contacto / soporte -->
+                        <Border StrokeShape="RoundRectangle 14"
+                                BackgroundColor="#EFE8E5"
+                                Stroke="#D0C1BB"
+                                Padding="14">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Soporte"
+                                       FontAttributes="Bold"
+                                       TextColor="#5A3B31" />
+
+                                <Label Text="Si necesitas ayuda adicional, puedes contactarnos por correo."
+                                       TextColor="#2B2B2B" />
+
+                                <Button Text="Contactar soporte"
+                                        BackgroundColor="#6B4A3D"
+                                        TextColor="White"
+                                        CornerRadius="14"
+                                        HeightRequest="48"
+                                        Clicked="OnContactSupportClicked" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Botón volver -->
+                        <Button Text="Volver"
+                                BackgroundColor="#6B4A3D"
+                                TextColor="White"
+                                CornerRadius="14"
+                                HeightRequest="48"
+                                Clicked="OnBackClicked" />
+
+                    </VerticalStackLayout>
+                </ScrollView>
+
+            </Border>
+
+        </Grid>
+
+        <!-- MENÚ INFERIOR (NUEVO) -->
+        <Grid Grid.Row="1"
+              BackgroundColor="Transparent"
+              Padding="12"
+              RowDefinitions="Auto,Auto"
+              RowSpacing="10">
+
+            <Grid x:Name="MenuToggleArea"
+                  BackgroundColor="Transparent"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center"
+                  Padding="12">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnToggleMenuTapped" />
+                </Grid.GestureRecognizers>
+
+                <Image x:Name="MenuArrow"
+                       Source="arrowup.png"
+                       WidthRequest="28"
+                       HeightRequest="28"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       InputTransparent="True" />
+            </Grid>
+
+            <ScrollView x:Name="MenuScroll"
+                        Grid.Row="1"
+                        IsVisible="False"
+                        HeightRequest="{Binding MenuMaxHeight}">
+
+                <VerticalStackLayout Spacing="10">
+                    <Button Text="Dashboard" Style="{StaticResource SecondaryButton}" Clicked="OnDashboardClicked" />
+                    <Button Text="Compras Activas" Style="{StaticResource SecondaryButton}" Clicked="OnPurchasesListClicked" />
+                    <Button Text="Detalle de Compras" Style="{StaticResource SecondaryButton}" Clicked="OnPurchaseDetailClicked" />
+                    <Button Text="Registrar Nueva Compra" Style="{StaticResource SecondaryButton}" Clicked="OnPurchaseRegisterClicked" />
+                    <Button Text="Registrar Abono" Style="{StaticResource SecondaryButton}" Clicked="OnPaymentCreateClicked" />
+                    <Button Text="Perfil" Style="{StaticResource SecondaryButton}" Clicked="OnProfileClicked" />
+                    <Button Text="Contacto o Ayuda" Style="{StaticResource SecondaryButton}" Clicked="OnHelpClicked" />
+                    <Button Text="Reportes" Style="{StaticResource SecondaryButton}" Clicked="OnReportsClicked" />
+                    <Button Text="Cerrar sesión" Style="{StaticResource SecondaryButton}" Clicked="OnLogoutClicked" />
+                </VerticalStackLayout>
+
+            </ScrollView>
+        </Grid>
+
+    </Grid>
+</ContentPage>

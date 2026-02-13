@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MOBILUX.Pages.ProfilePage"
+    BackgroundColor="{StaticResource Brown50}"
+    Title="Perfil del cliente">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- CONTENIDO ORIGINAL (NO CAMBIADO) -->
+        <Grid Grid.Row="0">
+
+            <Border
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                StrokeShape="RoundRectangle 18"
+                BackgroundColor="#D8CCC7"
+                Stroke="#C3B2AB"
+                WidthRequest="{OnIdiom Phone=360, Tablet=720, Desktop=720}"
+                MaximumWidthRequest="{OnIdiom Phone=360, Tablet=720, Desktop=720}"
+                Padding="{OnIdiom Phone=18, Tablet=24, Desktop=24}">
+
+                <ScrollView>
+                    <VerticalStackLayout Padding="16" Spacing="14">
+
+                        <Label Text="Perfil del cliente"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               TextColor="{StaticResource Brown600}"
+                               FontSize="20"
+                               FontAttributes="Bold" />
+
+                        <Border StrokeShape="RoundRectangle 14" Padding="12">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Datos personales" FontAttributes="Bold" />
+
+                                <Entry Placeholder="Nombre completo"
+                                       Text="{Binding Client.FullName, Mode=TwoWay}" />
+
+                                <Entry Placeholder="Identificación"
+                                       Text="{Binding Client.IdNumber, Mode=TwoWay}" />
+
+                                <Entry Placeholder="Teléfono"
+                                       Keyboard="Telephone"
+                                       Text="{Binding Client.Phone, Mode=TwoWay}" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border StrokeShape="RoundRectangle 14" Padding="12">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Correos y notificaciones" FontAttributes="Bold" />
+
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label Text="Recibir notificaciones por correo"
+                                           VerticalOptions="Center" />
+                                    <Switch IsToggled="{Binding Client.EmailNotificationsEnabled, Mode=TwoWay}" />
+                                </HorizontalStackLayout>
+
+                                <Entry Placeholder="Correo principal"
+                                       Keyboard="Email"
+                                       Text="{Binding Client.EmailPrimary, Mode=TwoWay}" />
+
+                                <Label Text="{Binding ErrorCorreoPrincipal}"
+                                       TextColor="Red"
+                                       FontSize="12"
+                                       IsVisible="{Binding MostrarErrorCorreoPrincipal}" />
+
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label Text="Usar correo secundario"
+                                           VerticalOptions="Center" />
+
+                                    <Switch Toggled="OnToggleCorreoSecundario" />
+                                </HorizontalStackLayout>
+
+                                <Entry x:Name="SecondaryEmailEntry"
+                                       Placeholder="Correo secundario (opcional)"
+                                       Keyboard="Email"
+                                       IsEnabled="False"
+                                       Text="{Binding Client.EmailSecondary, Mode=TwoWay}" />
+
+                                <Label Text="{Binding ErrorCorreoSecundario}"
+                                       TextColor="Red"
+                                       FontSize="12"
+                                       IsVisible="{Binding MostrarErrorCorreoSecundario}" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Button Text="Guardar cambios"
+                                Clicked="OnGuardarClicked"
+                                Style="{StaticResource PrimaryButton}" />
+
+                        <Button Text="Cerrar sesión"
+                                Clicked="OnCerrarSesionClicked"
+                                Style="{StaticResource PrimaryButton}" />
+
+                    </VerticalStackLayout>
+                </ScrollView>
+            </Border>
+
+        </Grid>
+
+        <!-- MENÚ COMPLETO -->
+        <Grid Grid.Row="1"
+              BackgroundColor="Transparent"
+              Padding="12"
+              RowDefinitions="Auto,Auto"
+              RowSpacing="10">
+
+            <Grid x:Name="MenuToggleArea"
+                  BackgroundColor="Transparent"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center"
+                  Padding="12">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnToggleMenuTapped" />
+                </Grid.GestureRecognizers>
+
+                <Image x:Name="MenuArrow"
+                       Source="arrowup.png"
+                       WidthRequest="28"
+                       HeightRequest="28"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       InputTransparent="True" />
+            </Grid>
+
+            <ScrollView x:Name="MenuScroll"
+                        Grid.Row="1"
+                        IsVisible="False"
+                        HeightRequest="{Binding MenuMaxHeight}">
+
+                <VerticalStackLayout Spacing="10">
+                    <Button Text="Dashboard" Style="{StaticResource SecondaryButton}" Clicked="OnDashboardClicked" />
+                    <Button Text="Compras Activas" Style="{StaticResource SecondaryButton}" Clicked="OnPurchasesListClicked" />
+                    <Button Text="Detalle de Compras" Style="{StaticResource SecondaryButton}" Clicked="OnPurchaseDetailClicked" />
+                    <Button Text="Registrar Nueva Compra" Style="{StaticResource SecondaryButton}" Clicked="OnPurchaseRegisterClicked" />
+                    <Button Text="Registrar Abono" Style="{StaticResource SecondaryButton}" Clicked="OnPaymentCreateClicked" />
+                    <Button Text="Perfil" Style="{StaticResource SecondaryButton}" Clicked="OnProfileClicked" />
+                    <Button Text="Contacto o Ayuda" Style="{StaticResource SecondaryButton}" Clicked="OnHelpClicked" />
+                    <Button Text="Reportes" Style="{StaticResource SecondaryButton}" Clicked="OnReportsClicked" />
+                    <Button Text="Cerrar sesión" Style="{StaticResource SecondaryButton}" Clicked="OnLogoutClicked" />
+                </VerticalStackLayout>
+
+            </ScrollView>
+
+        </Grid>
+
+    </Grid>
+</ContentPage>

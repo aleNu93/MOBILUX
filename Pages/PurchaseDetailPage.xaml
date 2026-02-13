@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MOBILUX.Pages.PurchaseDetailPage"
+             x:Name="ThisPage"
+             Title="Detalle de compra"
+             BackgroundColor="{StaticResource Brown50}">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- CONTENIDO -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="20"
+                                 Spacing="18">
+
+                <!-- TÍTULO ARRIBA -->
+                <Frame Style="{StaticResource CardFrame}">
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Detalle de compra"
+                               Style="{StaticResource TitleLabel}" />
+                        <Label Text="Información y estado de la compra seleccionada"
+                               Style="{StaticResource CaptionLabel}" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- PRODUCTO -->
+                <Frame Style="{StaticResource CardFrame}"
+                       BackgroundColor="{StaticResource Brown100}"
+                       BorderColor="{StaticResource Brown300}">
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Producto"
+                               Style="{StaticResource SubtitleLabel}" />
+
+                        <Label Text="{Binding ProductName}"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource Brown900}" />
+
+                        <Label Text="{Binding PurchaseDate, StringFormat='Fecha: {0:dd/MM/yyyy}'}"
+                               Style="{StaticResource BodyLabel}" />
+                    </VerticalStackLayout>
+
+                </Frame>
+
+                <!-- RESUMEN FINANCIERO -->
+                <Frame Style="{StaticResource CardFrame}"
+                       BackgroundColor="{StaticResource Brown100}"
+                       BorderColor="{StaticResource Brown300}">
+
+                    <VerticalStackLayout Spacing="10">
+
+                        <Label Text="Resumen Financiero"
+                               Style="{StaticResource SubtitleLabel}" />
+
+                        <BoxView Style="{StaticResource Divider}" />
+
+                        <Grid ColumnDefinitions="*,Auto">
+
+                            <VerticalStackLayout Spacing="6">
+                                <Label Text="Total Invertido"
+                                       Style="{StaticResource BodyLabel}" />
+                                <Label Text="Saldo Pendiente"
+                                       Style="{StaticResource BodyLabel}" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="1"
+                                                 Spacing="6"
+                                                 HorizontalOptions="End">
+
+                                <Label Text="{Binding TotalPrice, StringFormat='₡{0:N0}'}"
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource Brown800}" />
+
+                                <Label Text="{Binding RemainingBalance, StringFormat='₡{0:N0}'}"
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource Brown700}" />
+
+                            </VerticalStackLayout>
+
+                        </Grid>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+                <!-- ESTADO -->
+                <Frame Style="{StaticResource CardFrame}"
+                       BackgroundColor="{StaticResource Brown100}"
+                       BorderColor="{StaticResource Brown300}">
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label Text="Estado"
+                               Style="{StaticResource SubtitleLabel}" />
+
+                        <Label Text="{Binding Status}"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource Brown800}" />
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+                <!-- BOTÓN -->
+                <Button Text="Registrar Abono"
+                        Style="{StaticResource PrimaryButton}"
+                        Margin="0,10,0,30"
+                        Clicked="OnPaymentCreateClicked" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- MENÚ -->
+        <Grid Grid.Row="1"
+              BackgroundColor="Transparent"
+              Padding="12"
+              RowDefinitions="Auto,Auto"
+              RowSpacing="10">
+
+            <Grid x:Name="MenuToggleArea"
+                  BackgroundColor="Transparent"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center"
+                  Padding="12">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnToggleMenuTapped" />
+                </Grid.GestureRecognizers>
+
+                <Image x:Name="MenuArrow"
+                       Source="arrowup.png"
+                       WidthRequest="28"
+                       HeightRequest="28"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       InputTransparent="True" />
+            </Grid>
+
+            <!-- ✅ FIX: Binding directo a la página, no al Purchase -->
+            <ScrollView x:Name="MenuScroll"
+                        Grid.Row="1"
+                        IsVisible="False"
+                        HeightRequest="{Binding Source={x:Reference ThisPage}, Path=MenuMaxHeight}">
+
+                <VerticalStackLayout Spacing="10">
+                    <Button Text="Dashboard" Style="{StaticResource SecondaryButton}" Clicked="OnDashboardClicked" />
+                    <Button Text="Compras Activas" Style="{StaticResource SecondaryButton}" Clicked="OnPurchasesListClicked" />
+                    <Button Text="Detalle de Compras" Style="{StaticResource SecondaryButton}" Clicked="OnPurchaseDetailClicked" />
+                    <Button Text="Registrar Nueva Compra" Style="{StaticResource SecondaryButton}" Clicked="OnPurchaseRegisterClicked" />
+                    <Button Text="Registrar Abono" Style="{StaticResource SecondaryButton}" Clicked="OnPaymentCreateClickedMenu" />
+                    <Button Text="Perfil" Style="{StaticResource SecondaryButton}" Clicked="OnProfileClicked" />
+                    <Button Text="Contacto o Ayuda" Style="{StaticResource SecondaryButton}" Clicked="OnHelpClicked" />
+                    <Button Text="Reportes" Style="{StaticResource SecondaryButton}" Clicked="OnReportsClicked" />
+                    <Button Text="Cerrar sesión" Style="{StaticResource SecondaryButton}" Clicked="OnLogoutClicked" />
+                </VerticalStackLayout>
+
+            </ScrollView>
+        </Grid>
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MOBILUX.Pages.PurchaseRegisterPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Registro de compra"
+    BackgroundColor="{StaticResource Brown50}">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- CONTENIDO ORIGINAL -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="20" Spacing="14">
+
+                <!-- Header -->
+                <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                    <Image Source="mobilelogo.png" WidthRequest="34" HeightRequest="34"/>
+                    <Label Text="Registro de compra" Style="{StaticResource TitleLabel}" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+
+                <Label Text="Ingresá la información de la compra."
+                       Style="{StaticResource BodyLabel}" />
+
+                <Frame Style="{StaticResource CardFrame}">
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label Text="Producto" Style="{StaticResource SubtitleLabel}" />
+
+                        <Label Text="Nombre / Descripción" Style="{StaticResource FieldLabel}" />
+                        <Entry x:Name="EntryNombre"
+                               Placeholder="Ej: Cama C&amp;B King"
+                               Style="{StaticResource InputEntry}" />
+
+                        <Label Text="Proveedor / Tienda" Style="{StaticResource FieldLabel}" />
+                        <Picker x:Name="PickerProveedor"
+                                Title="Seleccioná un proveedor"
+                                Style="{StaticResource InputPicker}">
+                            <Picker.Items>
+                                <x:String>Crate &amp; Barrel</x:String>
+                                <x:String>Ashley</x:String>
+                                <x:String>La Artística</x:String>
+                                <x:String>Otro</x:String>
+                            </Picker.Items>
+                        </Picker>
+
+                        <BoxView Style="{StaticResource Divider}" />
+
+                        <Label Text="Montos" Style="{StaticResource SubtitleLabel}" />
+
+                        <Label Text="Moneda" Style="{StaticResource FieldLabel}" />
+                        <Picker x:Name="PickerMoneda"
+                                Title="Seleccioná moneda"
+                                Style="{StaticResource InputPicker}">
+                            <Picker.Items>
+                                <x:String>USD</x:String>
+                                <x:String>CRC</x:String>
+                            </Picker.Items>
+                        </Picker>
+
+                        <Label Text="Monto total" Style="{StaticResource FieldLabel}" />
+                        <Entry x:Name="EntryMonto"
+                               Placeholder="Ej: 3909"
+                               Keyboard="Numeric"
+                               Style="{StaticResource InputEntry}" />
+
+                        <Label Text="Enganche / Prima (opcional)" Style="{StaticResource FieldLabel}" />
+                        <Entry x:Name="EntryEnganche"
+                               Placeholder="Ej: 0"
+                               Keyboard="Numeric"
+                               Style="{StaticResource InputEntry}" />
+
+                        <BoxView Style="{StaticResource Divider}" />
+
+                        <Label Text="Financiamiento (simulación)" Style="{StaticResource SubtitleLabel}" />
+
+                        <Label Text="Tipo" Style="{StaticResource FieldLabel}" />
+                        <Picker x:Name="PickerTipoFin"
+                                Title="Seleccioná tipo de financiamiento"
+                                Style="{StaticResource InputPicker}"
+                                SelectedIndexChanged="OnTipoFinChanged">
+                            <Picker.Items>
+                                <x:String>Tasa Cero (0% - 12 meses)</x:String>
+                                <x:String>Crédito consumo (60 meses)</x:String>
+                            </Picker.Items>
+                        </Picker>
+
+                        <Label Text="Plazo (meses)" Style="{StaticResource FieldLabel}" />
+                        <Entry x:Name="EntryPlazo"
+                               Placeholder="Ej: 12 o 60"
+                               Keyboard="Numeric"
+                               Style="{StaticResource InputEntry}" />
+
+                        <Label Text="Tasa anual (TEA) — solo si es crédito" Style="{StaticResource FieldLabel}" />
+                        <Entry x:Name="EntryTasa"
+                               Placeholder="Ej: 18"
+                               Keyboard="Numeric"
+                               Style="{StaticResource InputEntry}" />
+
+                        <BoxView Style="{StaticResource Divider}" />
+
+                        <Button Text="Guardar compra"
+                                Style="{StaticResource PrimaryButton}"
+                                Clicked="OnGuardarCompraClicked" />
+
+                        <Button Text="Volver"
+                                Style="{StaticResource LinkButton}"
+                                Clicked="OnVolverClicked" />
+
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- MENÚ INFERIOR -->
+        <Grid Grid.Row="1"
+              BackgroundColor="Transparent"
+              Padding="12"
+              RowDefinitions="Auto,Auto"
+              RowSpacing="10">
+
+            <Grid x:Name="MenuToggleArea"
+                  BackgroundColor="Transparent"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center"
+                  Padding="12">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnToggleMenuTapped" />
+                </Grid.GestureRecognizers>
+
+                <Image x:Name="MenuArrow"
+                       Source="arrowup.png"
+                       WidthRequest="28"
+                       HeightRequest="28"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       InputTransparent="True" />
+            </Grid>
+
+            <ScrollView x:Name="MenuScroll"
+                        Grid.Row="1"
+                        IsVisible="False"
+                        HeightRequest="{Binding MenuMaxHeight}">
+
+                <VerticalStackLayout Spacing="10">
+                    <Button Text="Dashboard" Style="{StaticResource SecondaryButton}" Clicked="OnDashboardClicked" />
+                    <Button Text="Compras Activas" Style="{StaticResource SecondaryButton}" Clicked="OnPurchasesListClicked" />
+                    <Button Text="Detalle de Compras" Style="{StaticResource SecondaryButton}" Clicked="OnPurchaseDetailClicked" />
+                    <Button Text="Registrar Nueva Compra" Style="{StaticResource SecondaryButton}" Clicked="OnPurchaseRegisterClicked" />
+                    <Button Text="Registrar Abono" Style="{StaticResource SecondaryButton}" Clicked="OnPaymentCreateClicked" />
+                    <Button Text="Perfil" Style="{StaticResource SecondaryButton}" Clicked="OnProfileClicked" />
+                    <Button Text="Contacto o Ayuda" Style="{StaticResource SecondaryButton}" Clicked="OnHelpClicked" />
+                    <Button Text="Reportes" Style="{StaticResource SecondaryButton}" Clicked="OnReportsClicked" />
+                    <Button Text="Cerrar sesión" Style="{StaticResource SecondaryButton}" Clicked="OnLogoutClicked" />
+                </VerticalStackLayout>
+
+            </ScrollView>
+        </Grid>
+
+    </Grid>
+</ContentPage>

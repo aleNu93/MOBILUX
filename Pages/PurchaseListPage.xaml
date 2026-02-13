@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MOBILUX.Pages.PurchaseListPage"
+    BackgroundColor="{StaticResource Brown50}"
+    Title="Compras">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- CONTENIDO ORIGINAL -->
+        <ScrollView Grid.Row="0">
+
+            <VerticalStackLayout Padding="20"
+                                 Spacing="18">
+
+                <!-- 🔹 HEADER -->
+                <Frame Style="{StaticResource CardFrame}">
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label Text="Compras Activas"
+                               Style="{StaticResource TitleLabel}" />
+
+                        <Label Text="Resumen general de tus compras registradas"
+                               Style="{StaticResource CaptionLabel}" />
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+                <!-- 🔹 RESUMEN FINANCIERO -->
+                <Frame Style="{StaticResource CardFrame}">
+
+                    <VerticalStackLayout Spacing="10">
+
+                        <Label Text="Resumen Financiero"
+                               Style="{StaticResource SubtitleLabel}" />
+
+                        <BoxView Style="{StaticResource Divider}" />
+
+                        <Grid ColumnDefinitions="*,Auto"
+                              RowDefinitions="Auto,Auto"
+                              RowSpacing="8">
+
+                            <Label Text="Total Invertido"
+                                   Style="{StaticResource BodyLabel}" />
+
+                            <Label Grid.Column="1"
+                                   Text="{Binding TotalInvested, StringFormat='₡{0:N0}'}"
+                                   Style="{StaticResource SubtitleLabel}"
+                                   HorizontalOptions="End" />
+
+                            <Label Grid.Row="1"
+                                   Text="Saldo Pendiente"
+                                   Style="{StaticResource BodyLabel}" />
+
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="{Binding TotalPending, StringFormat='₡{0:N0}'}"
+                                   Style="{StaticResource SubtitleLabel}"
+                                   HorizontalOptions="End" />
+
+                        </Grid>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+                <!-- 🔹 ACCIONES -->
+                <VerticalStackLayout Spacing="10">
+
+                    <Label Text="Acciones"
+                           Style="{StaticResource SubtitleLabel}" />
+
+                    <Button Text="➕ Nueva Compra"
+                            Style="{StaticResource PrimaryButton}"
+                            Clicked="OnPurchaseRegisterClicked" />
+
+                    <Button Text="💳 Registrar Abono"
+                            Style="{StaticResource SecondaryButton}"
+                            Clicked="OnPaymentCreateClicked" />
+
+                </VerticalStackLayout>
+
+                <!-- 🔹 LISTADO -->
+                <Label Text="Listado de Compras"
+                       Style="{StaticResource SubtitleLabel}" />
+
+                <CollectionView x:Name="PurchaseCollection"
+                                SelectionMode="Single">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Frame Style="{StaticResource ListItemFrame}">
+
+                                <Grid ColumnDefinitions="*,Auto"
+                                      RowDefinitions="Auto,Auto,Auto"
+                                      ColumnSpacing="12"
+                                      RowSpacing="4">
+
+                                    <!-- Producto -->
+                                    <Label Grid.Row="0"
+                                           Grid.Column="0"
+                                           Text="{Binding ProductName}"
+                                           Style="{StaticResource SubtitleLabel}" />
+
+                                    <!-- Estado -->
+                                    <Label Grid.Row="0"
+                                           Grid.Column="1"
+                                           Text="{Binding Status}"
+                                           Style="{StaticResource CaptionLabel}"
+                                           HorizontalOptions="End" />
+
+                                    <!-- Fecha -->
+                                    <Label Grid.Row="1"
+                                           Grid.Column="0"
+                                           Text="{Binding PurchaseDate, StringFormat='Fecha: {0:dd/MM/yyyy}'}"
+                                           Style="{StaticResource BodyLabel}" />
+
+                                    <!-- Total -->
+                                    <Label Grid.Row="2"
+                                           Grid.Column="0"
+                                           Text="{Binding TotalPrice, StringFormat='Total: ₡{0:N0}'}"
+                                           Style="{StaticResource BodyLabel}" />
+
+                                    <!-- Saldo -->
+                                    <Label Grid.Row="2"
+                                           Grid.Column="1"
+                                           Text="{Binding RemainingBalance, StringFormat='Saldo: ₡{0:N0}'}"
+                                           Style="{StaticResource SubtitleLabel}"
+                                           HorizontalOptions="End" />
+
+                                </Grid>
+
+                            </Frame>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+        <!-- MENÚ INFERIOR -->
+        <Grid Grid.Row="1"
+              BackgroundColor="Transparent"
+              Padding="12"
+              RowDefinitions="Auto,Auto"
+              RowSpacing="10">
+
+            <Grid x:Name="MenuToggleArea"
+                  BackgroundColor="Transparent"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center"
+                  Padding="12">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnToggleMenuTapped" />
+                </Grid.GestureRecognizers>
+
+                <Image x:Name="MenuArrow"
+                       Source="arrowup.png"
+                       WidthRequest="28"
+                       HeightRequest="28"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       InputTransparent="True" />
+            </Grid>
+
+            <ScrollView x:Name="MenuScroll"
+                        Grid.Row="1"
+                        IsVisible="False"
+                        HeightRequest="{Binding MenuMaxHeight}">
+
+                <VerticalStackLayout Spacing="10">
+                    <Button Text="Dashboard" Style="{StaticResource SecondaryButton}" Clicked="OnDashboardClicked" />
+                    <Button Text="Compras Activas" Style="{StaticResource SecondaryButton}" Clicked="OnPurchasesListClicked" />
+                    <Button Text="Detalle de Compras" Style="{StaticResource SecondaryButton}" Clicked="OnPurchaseDetailClicked" />
+                    <Button Text="Registrar Nueva Compra" Style="{StaticResource SecondaryButton}" Clicked="OnPurchaseRegisterClickedMenu" />
+                    <Button Text="Registrar Abono" Style="{StaticResource SecondaryButton}" Clicked="OnPaymentCreateClickedMenu" />
+                    <Button Text="Perfil" Style="{StaticResource SecondaryButton}" Clicked="OnProfileClicked" />
+                    <Button Text="Contacto o Ayuda" Style="{StaticResource SecondaryButton}" Clicked="OnHelpClicked" />
+                    <Button Text="Reportes" Style="{StaticResource SecondaryButton}" Clicked="OnReportsClicked" />
+                    <Button Text="Cerrar sesión" Style="{StaticResource SecondaryButton}" Clicked="OnLogoutClicked" />
+                </VerticalStackLayout>
+
+            </ScrollView>
+        </Grid>
+
+    </Grid>
+</ContentPage>
