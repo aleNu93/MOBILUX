@@ -1,4 +1,4 @@
-# 📱 Mobilux
+# 📱 Mobilux – Financial Management App for Financed Purchases (Under Development)
 
 Mobilux is a mobile application developed as an academic project, focused on the **financial management of high-value furniture purchases acquired through financing**. The application allows an individual client to maintain a clear and structured record of outstanding balances, payments made, and the overall status of financed purchases.
 
